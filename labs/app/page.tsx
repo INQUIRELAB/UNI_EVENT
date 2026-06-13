@@ -7,6 +7,7 @@ import { PALETTE } from "./lib/palette";
 import AccumulationSection from "./components/AccumulationSection";
 import MorphSection from "./components/MorphSection";
 import TutorSection from "./components/TutorSection";
+import ClosingSection from "./components/ClosingSection";
 
 // R3F must run client-only (no SSR of WebGL).
 const HeroCanvas = dynamic(() => import("./components/HeroCanvas"), { ssr: false });
@@ -25,6 +26,7 @@ export default function Home() {
 
   return (
     <main className="relative w-full">
+      <span id="top" />
       <section className="relative h-[100svh] w-full overflow-hidden">
       {/* the performed hero */}
       <div className="absolute inset-0">
@@ -111,6 +113,7 @@ export default function Home() {
       <AccumulationSection />
       <MorphSection />
       <TutorSection />
+      <ClosingSection />
     </main>
   );
 }
