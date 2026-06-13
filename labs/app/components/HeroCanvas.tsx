@@ -197,8 +197,7 @@ export default function HeroCanvas({
         autoRotate
         autoRotateSpeed={0.45}
         enablePan={false}
-        minDistance={1.3}
-        maxDistance={7}
+        enableZoom={false}
       />
     </Canvas>
   );

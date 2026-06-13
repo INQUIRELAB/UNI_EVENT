@@ -246,7 +246,7 @@ export default function MorphScene({ mode }: { mode: MorphMode }) {
     <Canvas camera={{ position: [1.7, 0.9, 2.6], fov: 55 }} dpr={[1, 2]} gl={{ antialias: true }}>
       <color attach="background" args={[PALETTE.bg]} />
       {spike && <Scene spike={spike} graph={graph} mode={mode} />}
-      <OrbitControls enableDamping dampingFactor={0.08} autoRotate autoRotateSpeed={0.35} enablePan={false} minDistance={1.4} maxDistance={7} />
+      <OrbitControls enableDamping dampingFactor={0.08} autoRotate autoRotateSpeed={0.35} enablePan={false} enableZoom={false} />
     </Canvas>
   );
 }

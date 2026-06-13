@@ -8,6 +8,8 @@ import AccumulationSection from "./components/AccumulationSection";
 import MorphSection from "./components/MorphSection";
 import TutorSection from "./components/TutorSection";
 import ClosingSection from "./components/ClosingSection";
+import SmoothScroll from "./components/SmoothScroll";
+import Reveal from "./components/Reveal";
 
 // R3F must run client-only (no SSR of WebGL).
 const HeroCanvas = dynamic(() => import("./components/HeroCanvas"), { ssr: false });
@@ -26,6 +28,7 @@ export default function Home() {
 
   return (
     <main className="relative w-full">
+      <SmoothScroll />
       <span id="top" />
       <section className="relative h-[100svh] w-full overflow-hidden">
       {/* the performed hero */}
@@ -104,15 +107,23 @@ export default function Home() {
         </div>
       </footer>
 
-        {/* scroll cue */}
-        <div className="pointer-events-none absolute inset-x-0 bottom-16 flex justify-center">
-          <div className="mono animate-pulse text-xs text-[var(--muted)]">scroll ↓ &nbsp;&quot;what am I looking at?&quot;</div>
-        </div>
+        {/* scroll cue — clickable, inviting */}
+        <a
+          href="#payoff"
+          className="group absolute bottom-24 left-1/2 flex -translate-x-1/2 items-center gap-2.5 rounded-full border border-white/20 bg-white/5 px-5 py-2.5 backdrop-blur-sm transition hover:border-white/50 hover:bg-white/10"
+        >
+          <span className="text-sm font-medium text-white">what am I looking at?</span>
+          <span className="text-base text-[var(--on)] transition-transform group-hover:translate-y-0.5 motion-safe:animate-bounce">
+            ↓
+          </span>
+        </a>
       </section>
 
       <AccumulationSection />
       <MorphSection />
-      <TutorSection />
+      <Reveal>
+        <TutorSection />
+      </Reveal>
       <ClosingSection />
     </main>
   );

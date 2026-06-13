@@ -90,7 +90,7 @@ export default function TutorSection() {
         <h2 className="mt-3 max-w-3xl text-3xl font-semibold tracking-tight text-white sm:text-4xl">
           Claude reads the sensor.
         </h2>
-        <p className="mt-3 max-w-2xl text-[15px] leading-relaxed text-[var(--muted)]">
+        <p className="mt-3 max-w-2xl text-[15px] leading-relaxed text-[var(--fg)]">
           Microsecond, asynchronous events are a modality language models have never been able to see. Here Claude
           reasons about this clip — grounded in <span className="text-white">real computed statistics</span>, never
           vibes. Every number below is measured from the stream.
