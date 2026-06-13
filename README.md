@@ -71,7 +71,7 @@ Pain → solution, undeniable: per-dataset glue and weeks of preprocessing colla
 
 - **Impact** — the field's most exciting sensor has its steepest on-ramp; UniEvent is the missing unified bridge from raw events to AI-ready representations, taught from first principles on real CC0 data, end to end. Built by an educator in the field (textbook on the way from INQUIRE.ai) — authority you can't fake in a day.
 - **Demo** — a live, deployed [zero-to-hero experience](https://uni-event-yazan-inquire.vercel.app): the performed space-time cloud → accumulate to a legible event frame (two people, walking) → one stream, four representations → Claude reading the sensor.
-- **Opus 4.8 creative use** — an in-Labs tutor that *perceives a sensor modality it cannot natively see*, grounded in real computed stats (never vibes), plus a live, capped "ask about this clip."
+- **Opus 4.8 creative use** — (1) an in-Labs tutor that *perceives a sensor modality it cannot natively see*, grounded in real computed stats (never vibes), plus a live, capped "ask about this clip"; (2) a **test-gated adapter generator** (`python scripts/adapter_demo.py`): paste a *new* dataset format → Opus writes a conforming adapter → the conformance gate flashes green → all four builders run on a format it had never seen. Real engineering, self-verifying.
 - **Orchestration** — the autonomy story below + [`ORCHESTRATION.md`](ORCHESTRATION.md) + `make grade` **8/8**.
 
 ### How this was built (the autonomy story)

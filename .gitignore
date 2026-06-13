@@ -44,6 +44,10 @@ out/
 .vercel/
 npm-debug.log*
 
+# adapter-gen demo artifacts (regenerated each run; Opus output is non-deterministic)
+scripts/_demo_newformat.csv
+scripts/_generated_adapter.py
+
 # OS / editor
 .DS_Store
 Thumbs.db

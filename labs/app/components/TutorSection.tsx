@@ -211,6 +211,12 @@ export default function TutorSection() {
           Pre-computed narration is integrity-audited (a second agent flags any unsupported claim). Live answers call
           Claude Opus 4.8 with these real stats as context — grounded, never vibes.
         </p>
+        <p className="mt-3 text-sm leading-relaxed text-[var(--fg)]">
+          And Opus does real engineering here too:{" "}
+          <span className="mono text-white">python scripts/adapter_demo.py</span> — paste a <span className="text-white">new</span>{" "}
+          dataset format, Claude writes a conforming adapter, the conformance test flashes{" "}
+          <span className="text-emerald-300">green</span>, and all four builders run on a format it had never seen.
+        </p>
       </div>
     </section>
   );
