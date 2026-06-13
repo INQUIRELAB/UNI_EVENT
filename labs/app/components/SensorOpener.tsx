@@ -9,7 +9,6 @@ const SPECS = [
   ["no", "motion blur"],
   [">120 dB", "dynamic range"],
   ["milliwatts", "power"],
-  ["sparse", "only what changes"],
 ];
 
 export default function SensorOpener() {
@@ -20,16 +19,15 @@ export default function SensorOpener() {
     >
       <div className="mx-auto w-full max-w-6xl px-6">
         <p className="mono text-xs uppercase tracking-[0.25em] text-[var(--muted)]">
-          first principles · a brain-inspired sensor
+          01 · the eye — a brain-inspired sensor
         </p>
         <h1 className="mt-3 max-w-3xl text-4xl font-semibold leading-tight tracking-tight text-white sm:text-5xl">
           Two ways to see a moving world.
         </h1>
         <p className="mt-4 max-w-2xl text-[15px] leading-relaxed text-[var(--fg)] sm:text-base">
-          An ordinary camera shoots full frames on a fixed clock — it smears fast motion into blur and spends
-          bandwidth re-photographing everything that didn&apos;t move. An <span className="text-white">event camera</span>{" "}
-          is different: each pixel fires independently, the microsecond its brightness changes. Same motion, two
-          worlds —
+          A normal camera re-reads <span className="text-white">every pixel on a fixed clock</span> — the whole frame
+          at once, most of it unchanged. An <span className="text-white">event camera</span> is built like a retina:
+          each pixel fires on its own, the microsecond its brightness changes. Same blob, two sensors —
         </p>
 
         {/* the side-by-side illustration */}
@@ -42,6 +40,18 @@ export default function SensorOpener() {
           </span>
         </div>
 
+        {/* the two readings */}
+        <div className="mt-4 grid gap-3 text-sm sm:grid-cols-2">
+          <div className="rounded-lg border border-white/10 bg-white/[0.02] px-4 py-3">
+            <span className="font-semibold text-white">Frame camera</span>
+            <span className="mono ml-2 text-xs text-[var(--muted)]">every pixel, every frame · ~30–1000 fps · mostly redundant</span>
+          </div>
+          <div className="rounded-lg border border-white/10 bg-white/[0.02] px-4 py-3">
+            <span className="font-semibold text-white">Event sensor</span>
+            <span className="mono ml-2 text-xs text-[var(--muted)]">each pixel fires alone · µs latency · ~mW · brain-inspired</span>
+          </div>
+        </div>
+
         {/* specs */}
         <div className="mt-7 flex flex-wrap gap-x-8 gap-y-3">
           {SPECS.map(([big, small]) => (
@@ -52,14 +62,18 @@ export default function SensorOpener() {
           ))}
         </div>
 
-        <p className="mt-7 max-w-2xl text-[15px] leading-relaxed text-[var(--fg)]">
-          This isn&apos;t a thought experiment — it ships in <span className="text-white">Sony&apos;s IMX636</span> /
-          Prophesee EVS, a stacked event-vision sensor. So what does one actually output?
-        </p>
+        {/* the real sensor — big */}
+        <div className="mt-8 border-t border-white/10 pt-7">
+          <p className="text-sm text-[var(--muted)]">This isn&apos;t a thought experiment. It ships today, in</p>
+          <p className="mt-1 text-2xl font-semibold tracking-tight text-white sm:text-3xl">
+            Sony <span style={{ color: "#FF5A3C" }}>IMX636</span> · Prophesee EVS
+          </p>
+          <p className="mt-1 text-sm text-[var(--muted)]">a stacked event-vision sensor. So what does one actually output?</p>
+        </div>
 
         <a
           href="#hero"
-          className="group mt-6 inline-flex items-center gap-2.5 rounded-full border border-white/20 bg-white/5 px-5 py-2.5 backdrop-blur-sm transition hover:border-white/50 hover:bg-white/10"
+          className="group mt-7 inline-flex items-center gap-2.5 rounded-full border border-white/20 bg-white/5 px-5 py-2.5 backdrop-blur-sm transition hover:border-white/50 hover:bg-white/10"
         >
           <span className="text-sm font-medium text-white">see real events</span>
           <span className="text-base text-[var(--on)] motion-safe:animate-bounce">↓</span>
