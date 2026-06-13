@@ -11,6 +11,7 @@ import ClosingSection from "./components/ClosingSection";
 import SmoothScroll from "./components/SmoothScroll";
 import Reveal from "./components/Reveal";
 import SensorOpener from "./components/SensorOpener";
+import PipelineSection from "./components/PipelineSection";
 import MountWhenNear from "./components/MountWhenNear";
 
 // R3F must run client-only (no SSR of WebGL).
@@ -127,6 +128,7 @@ export default function Home() {
 
       <AccumulationSection />
       <MorphSection />
+      <PipelineSection />
       <Reveal>
         <TutorSection />
       </Reveal>
