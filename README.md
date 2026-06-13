@@ -65,6 +65,8 @@ The event-camera world has no standard. Every dataset ships its own loader, its 
 
 Pain → solution, undeniable: per-dataset glue and weeks of preprocessing collapse into **one stream → any representation → the right AI model**.
 
+> **Scope (claim = deliver).** The canonical `(x, y, t, p)` model + `represent()` work on **any** event stream you can load into those arrays — that is the engine, and it's fully built and tested. UniEvent ships a **Prophesee `.raw` decoder** (`[io]` extra) and a uniform adapter pattern, so adding a new dataset is a small, consistent addition — not a different SDK each time. It does *not* decode every vendor format out of the box (yet); the point is that it doesn't need to.
+
 ## How it scores
 
 - **Impact** — the field's most exciting sensor has its steepest on-ramp; UniEvent is the missing unified bridge from raw events to AI-ready representations, taught from first principles on real CC0 data, end to end. Built by an educator in the field (textbook on the way from INQUIRE.ai) — authority you can't fake in a day.

@@ -19,7 +19,29 @@ export default function ClosingSection() {
         <h2 className="mx-auto mt-4 max-w-3xl text-3xl font-semibold leading-tight tracking-tight text-white sm:text-5xl">
           The thing that taught you is the thing you build with.
         </h2>
-        <p className="mx-auto mt-5 max-w-2xl text-[16px] leading-relaxed text-[var(--muted)]">
+
+        {/* one stream -> four representations -> models, made visual */}
+        <div className="mx-auto mt-9 flex max-w-2xl flex-col items-center gap-2.5">
+          <span className="mono rounded-md border border-white/15 bg-black/50 px-3.5 py-1.5 text-sm text-white">
+            one (x, y, t, p) stream
+          </span>
+          <span className="mono text-xs text-[var(--muted)]">↓ ue.represent</span>
+          <div className="flex flex-wrap justify-center gap-2.5">
+            {[
+              ["spike", "🧠 neuromorphic SNN"],
+              ["voxel", "sparse 3D-conv"],
+              ["frame", "CNN"],
+              ["graph", "GNN"],
+            ].map(([r, d]) => (
+              <div key={r} className="rounded-lg border border-white/12 bg-white/[0.03] px-4 py-2 text-center">
+                <div className="mono text-sm font-medium text-white">{r}</div>
+                <div className="mono mt-0.5 text-[10px] text-[var(--off)]">{d}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <p className="mx-auto mt-8 max-w-2xl text-[16px] leading-relaxed text-[var(--fg)]">
           Every frame you just saw is real <span className="mono text-white">unievent</span> output — one canonical{" "}
           <span className="mono text-white">(x, y, t, p)</span> stream, every representation, one call. The library is
           the engine; the experience is its face. <span className="text-white">One suite, zero to hero</span> — for
