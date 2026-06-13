@@ -87,7 +87,7 @@ export default function MorphSection() {
   };
 
   return (
-    <section className="relative w-full bg-[var(--bg)] py-20 lg:py-28">
+    <section id="morph" className="relative w-full scroll-mt-8 bg-[var(--bg)] py-20 lg:py-28">
       <div className="mx-auto max-w-7xl px-6">
         <Reveal>
           <div className="grid items-center gap-8 lg:grid-cols-12 lg:gap-12">
@@ -107,7 +107,7 @@ export default function MorphSection() {
 
             {/* text rail — middle-right */}
             <div className="lg:col-span-5">
-              <p className="mono text-xs uppercase tracking-[0.2em] text-[var(--muted)]">the unification · one stream, four ways</p>
+              <p className="mono text-xs uppercase tracking-[0.2em] text-[var(--muted)]">04 · the four — one stream, four ways</p>
               <h2 className="mt-3 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
                 One clip. Every representation. One call.
               </h2>

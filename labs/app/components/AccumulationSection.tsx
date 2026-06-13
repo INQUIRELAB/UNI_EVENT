@@ -74,7 +74,7 @@ export default function AccumulationSection() {
 
             {/* text rail — middle-right */}
             <div className="lg:col-span-5">
-              <p className="mono text-xs uppercase tracking-[0.2em] text-[var(--muted)]">the payoff · representation is everything</p>
+              <p className="mono text-xs uppercase tracking-[0.2em] text-[var(--muted)]">03 · the reveal — representation is everything</p>
               <h2 className="mt-3 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
                 So… what were you looking at?
               </h2>

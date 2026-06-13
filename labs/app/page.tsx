@@ -12,6 +12,7 @@ import SmoothScroll from "./components/SmoothScroll";
 import Reveal from "./components/Reveal";
 import SensorOpener from "./components/SensorOpener";
 import PipelineSection from "./components/PipelineSection";
+import ChapterRail from "./components/ChapterRail";
 import MountWhenNear from "./components/MountWhenNear";
 
 // R3F must run client-only (no SSR of WebGL).
@@ -32,6 +33,7 @@ export default function Home() {
   return (
     <main className="relative w-full">
       <SmoothScroll />
+      <ChapterRail />
       <span id="top" />
 
       {/* first principles: why event cameras (flows into the hero) */}

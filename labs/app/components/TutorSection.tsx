@@ -122,10 +122,10 @@ export default function TutorSection() {
   );
 
   return (
-    <section className="relative w-full bg-[var(--bg)] py-20 lg:py-28">
+    <section id="read" className="relative w-full scroll-mt-8 bg-[var(--bg)] py-20 lg:py-28">
       <div className="mx-auto max-w-5xl px-6">
         <p className="mono text-xs uppercase tracking-[0.2em] text-[var(--muted)]">
-          the Opus touch · perceiving a sensor it cannot natively see
+          06 · the read — the Opus touch · perceiving a sensor it cannot natively see
         </p>
         <h2 className="mt-3 max-w-3xl text-3xl font-semibold tracking-tight text-white sm:text-4xl">
           Claude reads the sensor.

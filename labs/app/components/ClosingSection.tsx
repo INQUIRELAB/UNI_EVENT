@@ -6,7 +6,7 @@ const REPO = "https://github.com/INQUIRELAB/UNI_EVENT";
 
 export default function ClosingSection() {
   return (
-    <section className="relative w-full overflow-hidden border-t border-white/10 bg-[var(--bg)] py-24">
+    <section id="merge" className="relative w-full scroll-mt-8 overflow-hidden border-t border-white/10 bg-[var(--bg)] py-24">
       {/* soft polarity glow */}
       <div
         className="pointer-events-none absolute inset-0 opacity-40"
@@ -15,7 +15,7 @@ export default function ClosingSection() {
         }}
       />
       <div className="relative mx-auto max-w-4xl px-6 text-center">
-        <p className="mono text-xs uppercase tracking-[0.25em] text-[var(--muted)]">the merge</p>
+        <p className="mono text-xs uppercase tracking-[0.25em] text-[var(--muted)]">07 · zero → hero · the merge</p>
         <h2 className="mx-auto mt-4 max-w-3xl text-3xl font-semibold leading-tight tracking-tight text-white sm:text-5xl">
           The thing that taught you is the thing you build with.
         </h2>
