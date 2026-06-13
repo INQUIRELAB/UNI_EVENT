@@ -31,6 +31,7 @@ export default function TutorSection() {
   const [answer, setAnswer] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const [offline, setOffline] = useState(false);
+  const [fallback, setFallback] = useState(false);
 
   useEffect(() => {
     fetch("/data/tutor.json").then((r) => (r.ok ? r.json() : null)).then(setTutor).catch(() => {});
@@ -47,22 +48,21 @@ export default function TutorSection() {
     setLoading(true);
     setAnswer(null);
     setOffline(false);
+    setFallback(false);
     try {
       const r = await fetch("/api/ask", {
         method: "POST",
         headers: { "content-type": "application/json" },
         body: JSON.stringify({ question: Q }),
       });
-      if (r.status === 503) {
+      if (!r.ok) {
         setOffline(true);
-      } else if (!r.ok) {
-        const j = await r.json().catch(() => ({}));
-        setAnswer(`(tutor error: ${j.error ?? r.status})`);
       } else {
         const j = await r.json();
         setAnswer(j.answer);
+        setFallback(!!j.fallback);
       }
-    } catch (e) {
+    } catch {
       setOffline(true);
     } finally {
       setLoading(false);
@@ -158,6 +158,11 @@ export default function TutorSection() {
               <div className="mono text-xs text-[var(--muted)]">you · {asked}</div>
               {loading && <div className="mt-2 animate-pulse text-sm text-[var(--muted)]">Claude is reading the stream…</div>}
               {answer && <div className="mt-2 text-[15px] leading-relaxed text-white">{answer}</div>}
+              {answer && fallback && (
+                <div className="mono mt-2 text-xs text-[var(--muted)]">
+                  live tutor at capacity — showing the pre-computed read (same real stats, never fabricated)
+                </div>
+              )}
               {offline && (
                 <div className="mt-2 text-[15px] leading-relaxed text-[var(--muted)]">
                   Live tutor is offline right now — but the pre-computed read above is grounded in the same real
