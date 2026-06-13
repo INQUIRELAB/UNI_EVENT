@@ -13,6 +13,7 @@ from __future__ import annotations
 from .core import (
     EventSample,
     EventStream,
+    MODEL_HINT,
     REPRESENTATIONS,
     UniEventIntegrityError,
     represent,
@@ -32,6 +33,7 @@ __all__ = [
     "EventSample",
     "Representation",
     "REPRESENTATIONS",
+    "MODEL_HINT",
     "UniEventIntegrityError",
     "represent",
     "sample_stream",

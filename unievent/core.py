@@ -27,11 +27,23 @@ __all__ = [
     "represent",
     "UniEventIntegrityError",
     "REPRESENTATIONS",
+    "MODEL_HINT",
 ]
 
 # The five representation names. The first four are the validated "core" set the
 # hero morph is built from; ``timesurface`` is the stretch fifth.
 REPRESENTATIONS = ("spike", "voxel", "frame", "graph", "timesurface")
+
+# The "→ AI" step that completes zero-to-hero: each representation is a model-ready
+# numpy array (no extra glue), and this maps it to the model family it feeds. The
+# through-line is *raw events → one stream → representation → the right AI model*.
+MODEL_HINT = {
+    "spike": "spiking neural nets · neuromorphic AI (events ARE spikes — the native form)",
+    "voxel": "sparse 3D-convolution detectors",
+    "frame": "ordinary CNNs / any 2D vision model",
+    "graph": "graph neural networks",
+    "timesurface": "CNNs · classic feature pipelines",
+}
 
 
 class UniEventIntegrityError(TypeError):

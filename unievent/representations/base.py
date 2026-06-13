@@ -37,6 +37,17 @@ class Representation:
 
         return export(self, out_dir)
 
+    @property
+    def model_hint(self) -> str:
+        """The AI model family this representation feeds (the ``→ AI`` step).
+
+        ``buffers`` are model-ready numpy arrays — no extra glue between
+        ``represent()`` and training. See ``unievent.MODEL_HINT``.
+        """
+        from ..core import MODEL_HINT
+
+        return MODEL_HINT.get(self.kind, "")
+
     def __repr__(self) -> str:  # pragma: no cover - cosmetic
         shapes = {k: tuple(v.shape) for k, v in self.buffers.items()}
         return f"Representation(kind={self.kind!r}, buffers={shapes}, simulated={self.source.get('simulated')})"

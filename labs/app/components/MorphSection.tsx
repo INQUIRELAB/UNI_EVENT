@@ -142,6 +142,16 @@ export default function MorphSection() {
                 <span className="text-emerald-300">{INFO[mode].call}</span>
                 <span className="text-[var(--fg)]">→ {statLine(mode, stats)}</span>
               </div>
+
+              {/* the → AI step: zero-to-hero, completed */}
+              <div className="mt-5 rounded-lg border border-[var(--off)]/25 bg-[var(--off)]/[0.05] px-4 py-3">
+                <span className="mono text-xs uppercase tracking-wider text-[var(--off)]">→ ready for AI</span>
+                <p className="mt-1 text-sm leading-snug text-[var(--fg)]">
+                  Each `represent()` output is a <span className="text-white">model-ready array</span> — raw events →
+                  one stream → representation → <span className="text-white">the right model</span>. The native path
+                  leads with <span className="text-white">spike → 🧠 neuromorphic SNN</span> (events <em>are</em> spikes).
+                </p>
+              </div>
             </div>
           </div>
         </Reveal>
