@@ -26,8 +26,10 @@ with a real exit code and prints a scorecard.
 > this: PASS means the call DID raise.)
 
 ## Check 6 — `<LIVE_URL>`
-`LIVE_URL=… bash scripts/grade.sh` (default `http://localhost:3000`). The static
-Vercel/Next.js Labs site satisfies it: a 200 on `/health` or on the site root.
+Live site: **https://uni-event-yazan-inquire.vercel.app** (auto-deploys on push to
+`main`). Grade against it: `LIVE_URL=https://uni-event-yazan-inquire.vercel.app bash
+scripts/grade.sh` (default `http://localhost:3000`). A 200 on `/health` or the site
+root satisfies it.
 
 ## Integrity (audited by eye + by check 4 + license-gate)
 - Every visual/number traces to a real `source` provenance block. Hero bundle is

@@ -11,7 +11,9 @@ ue.represent(ue.sample_stream(), as_="frame").to_web("labs/public/data/frame")
 
 **Any event-camera recording → one canonical `(x, y, t, p)` stream → spike · voxel · frame · graph (+ time-surface), from a single call.**
 
-[**▶ Live experience (the Labs)**](#the-labs) · [**The library**](#the-library) · [**The merge**](#the-merge-one-function-two-audiences) · [**Reproduce**](#reproduce-make-grade)
+### [**▶ Open the live experience →**](https://uni-event-yazan-inquire.vercel.app)
+
+[The library](#the-library) · [The merge](#the-merge-one-function-two-audiences) · [Reproduce](#reproduce-make-grade)
 
 </div>
 

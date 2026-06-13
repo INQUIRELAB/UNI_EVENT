@@ -1,65 +1,102 @@
-import Image from "next/image";
+"use client";
+
+import { useState } from "react";
+import dynamic from "next/dynamic";
+import type { Manifest } from "./lib/loadUniEvent";
+import { PALETTE } from "./lib/palette";
+
+// R3F must run client-only (no SSR of WebGL).
+const HeroCanvas = dynamic(() => import("./components/HeroCanvas"), { ssr: false });
+
+function fmt(n: number) {
+  return n.toLocaleString("en-US");
+}
 
 export default function Home() {
+  const [manifest, setManifest] = useState<Manifest | null>(null);
+  const [revealKey, setRevealKey] = useState(0);
+
+  const s = manifest?.stats;
+  const src = manifest?.source;
+  const res = manifest?.resolution;
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <main className="relative h-[100svh] w-full overflow-hidden">
+      {/* the performed hero */}
+      <div className="absolute inset-0">
+        <HeroCanvas onManifest={setManifest} revealKey={revealKey} />
+      </div>
+
+      {/* top-left identity */}
+      <header className="pointer-events-none absolute left-6 top-6 max-w-[52ch]">
+        <h1 className="text-2xl font-semibold tracking-tight text-white">
+          UniEvent<span className="text-[var(--muted)]"> · the space-time of a sensor</span>
+        </h1>
+        <p className="mt-1 text-sm text-[var(--muted)]">
+          One suite, zero to hero — for event-based vision. This is a <b className="text-white">real</b> event
+          stream: every dot is one event, born on its true microsecond timestamp.
+        </p>
+        <div className="mono mt-3 flex items-center gap-4 text-xs">
+          <span>
+            <span style={{ color: PALETTE.on }}>●</span> ON
+          </span>
+          <span>
+            <span style={{ color: PALETTE.off }}>●</span> OFF
+          </span>
+          <span className="text-[var(--muted)]">drag to orbit</span>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+      </header>
+
+      {/* integrity badge */}
+      <div className="pointer-events-none absolute right-6 top-7 text-right text-xs">
+        <span
+          className="mono rounded px-2 py-1"
+          style={{
+            color: src?.simulated === 0 ? "#6ee7b7" : "#ffd166",
+            background: src?.simulated === 0 ? "rgba(16,185,129,.12)" : "rgba(255,209,102,.12)",
+          }}
+        >
+          {src ? (src.simulated === 0 ? "REAL · not simulated" : "SIMULATED — teaching only") : "loading…"}
+        </span>
+      </div>
+
+      {/* provenance ticker — the merge, made visible */}
+      <footer className="absolute inset-x-0 bottom-0 border-t border-white/10 bg-black/40 backdrop-blur-sm">
+        <div className="mono flex flex-wrap items-center gap-x-5 gap-y-1 px-6 py-3 text-xs text-[var(--fg)]">
+          <span className="text-[var(--muted)]">provenance</span>
+          <span className="text-emerald-300">ue.represent(stream, as_=&quot;spike&quot;)</span>
+          {s && (
+            <>
+              <span>
+                → <b className="text-white">{fmt(s.n_events)}</b> real events
+              </span>
+              <span className="text-[var(--muted)]">·</span>
+              <span>
+                {res?.W}×{res?.H}
+              </span>
+              <span className="text-[var(--muted)]">·</span>
+              <span>{(s.t_span_us / 1000).toFixed(0)} ms</span>
+              <span className="text-[var(--muted)]">·</span>
+              <span>{(s.on_frac * 100).toFixed(0)}% ON</span>
+            </>
+          )}
+          {src && (
+            <>
+              <span className="text-[var(--muted)]">·</span>
+              <span>
+                {src.name}{" "}
+                <span className="rounded bg-emerald-500/15 px-1.5 py-0.5 text-emerald-300">{src.license}</span>
+              </span>
+            </>
+          )}
+          <button
+            onClick={() => setRevealKey((k) => k + 1)}
+            className="pointer-events-auto ml-auto rounded border border-white/15 px-3 py-1 text-white/90 transition hover:border-white/40 hover:bg-white/5"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+            ↻ replay reveal
+          </button>
         </div>
-      </main>
-    </div>
+      </footer>
+    </main>
   );
 }

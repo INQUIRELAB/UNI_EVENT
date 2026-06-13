@@ -9,15 +9,15 @@
     "name": "prophesee:pedestrians",
     "license": "CC0",
     "simulated": 0,
-    "note": "raw EVT3, decoded with expelliarmus; window [19780504, 20280504) \u00b5s, uniformly decimated 1,732,706->120,000 events for the web (a render choice; surviving per-event t,x,y,p are real).",
+    "note": "raw EVT3, decoded with expelliarmus; window [50917316, 51417316) \u00b5s, uniformly decimated 449,679->120,000 events for the web (a render choice; surviving per-event t,x,y,p are real).",
     "sensor": "1280x720",
     "original_events": 39297796,
     "window_us": [
-      19780504,
-      20280504
+      50917316,
+      51417316
     ],
     "decimation": {
-      "from": 1732706,
+      "from": 449679,
       "to": 120000,
       "seed": 0
     },
