@@ -5,6 +5,7 @@ import dynamic from "next/dynamic";
 import type { Manifest } from "./lib/loadUniEvent";
 import { PALETTE } from "./lib/palette";
 import AccumulationSection from "./components/AccumulationSection";
+import MorphSection from "./components/MorphSection";
 
 // R3F must run client-only (no SSR of WebGL).
 const HeroCanvas = dynamic(() => import("./components/HeroCanvas"), { ssr: false });
@@ -107,6 +108,7 @@ export default function Home() {
       </section>
 
       <AccumulationSection />
+      <MorphSection />
     </main>
   );
 }
