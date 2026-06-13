@@ -40,6 +40,15 @@ recording.raw ──ue.io.decode──► EventStream(t,x,y,p) ──ue.represen
                                                        .to_web() ──► manifest.json + payload.bin ──► the Labs (R3F)
 ```
 
+## The experience — a zero-to-hero journey · [▶ live](https://uni-event-yazan-inquire.vercel.app)
+
+Built backward from one hero moment that proves impact and demo at once. Four scroll beats, each rendered from real `ue.represent()` output, with a **provenance line** behind every visual showing the real call + count (the merge, made visible):
+
+1. **The hook** — the raw spike stream as an orbitable **space-time point cloud** (x×y = image plane, z = time), born event-by-event on real microsecond timestamps. *"What am I even looking at?"*
+2. **The payoff** — integrate those same events over time and the scene resolves into a legible **event frame**: two people, walking. *Representation is everything, felt.*
+3. **The unification** — one stream, four ways: the time axis morphs across **spike → voxel → frame → graph**, every view a real `ue.represent(stream, as_=…)` call.
+4. **The Opus touch** — **Claude reads the sensor**: Opus 4.8 narrates the clip from *real computed stats* (never vibes), with a live "ask about this clip" answered, grounded, on stage. See [`ORCHESTRATION.md`](ORCHESTRATION.md) for how an adversarial integrity-auditor agent keeps it honest.
+
 ## The library
 
 ```python
@@ -92,16 +101,17 @@ Hero clip = a **CC0** Prophesee recording (real raw events, decoded with `expell
 ## Layout
 
 ```
-unievent/            the library (one import)
-  core.py            EventStream / EventSample + represent() dispatch + integrity raise
-  represent/         spike · frame · voxel · graph · timesurface builders + SPEC.md
-  web.py             web.export() — bake a representation to a static bundle
-  io.py              decode .raw, window/decimate, npz round-trip
-  cli.py             `unievent bake` one-command entrypoint
-labs/                Next.js + R3F + GSAP — renders real UniEvent output
-scripts/             make_bundles.py · grade.sh · reproduce.sh
-rubric.md            machine-checkable PASS/FAIL list
-WEB_BUNDLE_SCHEMA.md the static bundle contract
+unievent/             the library (one import)
+  core.py             EventStream / EventSample + represent() dispatch + integrity raise
+  representations/    spike · frame · voxel · graph · timesurface builders + SPEC.md
+  web.py              web.export() — bake a representation to a static bundle
+  io.py               decode .raw, window/decimate, npz round-trip
+  cli.py              `unievent bake` one-command entrypoint
+labs/                 Next.js + R3F + GSAP — renders real UniEvent output
+  app/api/ask/        live "ask about this clip" → Claude Opus 4.8 (grounded)
+scripts/              make_bundles.py · clip_stats.py · grade.sh · reproduce.sh
+rubric.md             machine-checkable PASS/FAIL list · ORCHESTRATION.md  build evidence
+WEB_BUNDLE_SCHEMA.md  the static bundle contract
 ```
 
 ---
