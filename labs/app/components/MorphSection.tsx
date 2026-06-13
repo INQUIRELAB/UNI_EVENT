@@ -8,8 +8,8 @@ import Reveal from "./Reveal";
 
 const MorphScene = dynamic(() => import("./MorphScene"), { ssr: false });
 
-// frame 2nd = legibility early; voxel last = strong structured close.
-const ORDER: MorphMode[] = ["spike", "frame", "graph", "voxel"];
+// frame 2nd = legibility early; graph last = strong structured close.
+const ORDER: MorphMode[] = ["spike", "frame", "voxel", "graph"];
 
 const INFO: Record<MorphMode, { label: string; blurb: string; call: string; dest: string }> = {
   spike: {
@@ -114,7 +114,7 @@ export default function MorphSection() {
               <p className="mt-4 text-[15px] leading-relaxed text-[var(--fg)]">
                 The same 120,000 events, <span className="text-white">re-binned</span> four ways. Watch the{" "}
                 <span className="text-white">time axis</span> reshape — continuous spikes, collapsed to a frame,
-                rewired as a kNN graph, quantized into 16 voxel slabs. The counts are real{" "}
+                quantized into 16 voxel slabs, rewired as a kNN graph. The counts are real{" "}
                 <span className="mono text-white">unievent</span> output; the morph shows one canonical stream taking
                 each shape.
               </p>

@@ -48,7 +48,7 @@ Built backward from one hero moment that proves impact and demo at once. Four sc
 
 1. **The hook** — the raw spike stream as an orbitable **space-time point cloud** (x×y = image plane, z = time), born event-by-event on real microsecond timestamps. *"What am I even looking at?"*
 2. **The payoff** — integrate those same events over time and the scene resolves into a legible **event frame**: two people, walking. *Representation is everything, felt.*
-3. **The unification** — one stream, four ways: the time axis morphs across **spike → frame → graph → voxel**, every view a real `ue.represent(stream, as_=…)` call, each labelled with the AI model it feeds (spike → neuromorphic SNN, frame → CNN, graph → GNN, voxel → sparse 3D-conv).
+3. **The unification** — one stream, four ways: the time axis morphs across **spike → frame → voxel → graph**, every view a real `ue.represent(stream, as_=…)` call, each labelled with the AI model it feeds (spike → neuromorphic SNN, frame → CNN, voxel → sparse 3D-conv, graph → GNN).
 4. **The Opus touch** — **Claude reads the sensor**: Opus 4.8 narrates the clip from *real computed stats* (never vibes), with a live "ask about this clip" answered, grounded, on stage. See [`ORCHESTRATION.md`](ORCHESTRATION.md) for how an adversarial integrity-auditor agent keeps it honest.
 
 ## From a tangle of formats to one import
