@@ -1,0 +1,30 @@
+{
+  "generated_from": "stats.json (real, computed by scripts/clip_stats.py)",
+  "model": "claude-opus-4-8 (workflow: 4 narrators + 1 integrity auditor)",
+  "beats": [
+    {
+      "beat": "read",
+      "title": "Claude reads the sensor",
+      "narration": "This clip is event-only, so there's no picture here — just a stream of 449,679 brightness-change events firing at about 0.9 million per second across half a second, lighting up only 6% of the sensor while the other 94% sits silent in the dark. The ON and OFF events are almost perfectly balanced (51.7% brightening, 48.3% darkening), which is the signature of solid edges sweeping across pixels rather than lights flickering, and the activity gathers into 2 distinct clusters drifting upward-and-leftward together by about 17 pixels. My honest read: two moving things — most likely two people walking through the frame — traced not by their appearance but purely by the edges they disturb as they pass.",
+      "grounded": true
+    },
+    {
+      "beat": "cloud",
+      "title": "The space-time cloud",
+      "narration": "Here's the honest truth of what you're seeing: this sensor has no frames at all. Each of its 1280×720 pixels fires the instant the light hitting it changes, stamping that moment with a microsecond-precise time — so the natural way to draw the recording isn't a picture but a cloud, where x and y are where on the chip the change happened and z is *when* it happened, the events drifting through time like rain falling through a tall column. Slice that column at one single millisecond and almost nothing is there: across half a second only about 6% of the pixels ever lit up, so a one-millisecond sliver catches just a thin scatter of points — and they cluster along edges, because a flat unchanging surface emits nothing while a moving boundary is exactly where brightness flips, split nearly evenly between warm ON (51.7%) and cool OFF (48.3%). Stack thousands of those near-empty slices back up (the timing is remarkably steady, CV 0.04) and the sparse scatters fuse into streaks of motion — the whole field sliding upward and leftward by about 17 pixels.",
+      "grounded": true
+    },
+    {
+      "beat": "frame",
+      "title": "Why accumulation reveals it",
+      "narration": "Accumulation works because a single event is almost nothing — just one pixel saying “I brightened” or “I darkened” at one microsecond. But this clip fired 449,679 of those over 499.9 ms, and when you stack them into one frame, the scattered sparks settle onto the moving edges that produced them: about 55,039 pixels light up, only ~6% of the sensor, tracing two compact clusters drifting upward and leftward by ~17 px with near-even ON/OFF polarity — the signature of edges sweeping past, most plausibly two walking people. The choice of representation is the whole trick: the events never form a picture on their own, so by picking a time window and integrating, you trade the sensor's microsecond timing for spatial legibility — and only then does the hidden structure become something you can actually see.",
+      "grounded": true
+    },
+    {
+      "beat": "morph",
+      "title": "One stream, four ways",
+      "narration": "Here's the quiet magic: every event here is just four numbers — where it fired (x, y), exactly when (t), and whether the pixel brightened or darkened (p) — and across this 500 ms window there are 449,679 of them, balanced almost evenly between ON and OFF. Keep that stream raw and asynchronous and you feed a spiking network (SNN) that thinks in individual spikes, like the sensor itself. Bin the same events into a 3D grid of space-and-time voxels and a sparse-convolution net can crunch only the 6% of pixels that ever lit up, skipping the empty rest. Flatten time away into a single 2D frame and an ordinary vision model reads it like a smeared photo of motion; or connect nearby events into a graph and a graph net learns directly from how each spike relates to its neighbours — one stream, four lenses, no pixels invented.",
+      "grounded": true
+    }
+  ]
+}
