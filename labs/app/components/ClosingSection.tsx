@@ -68,8 +68,8 @@ export default function ClosingSection() {
           <a href="https://github.com/INQUIRELAB" className="underline decoration-white/20 hover:text-white">
             @INQUIRELAB
           </a>
-          ) — PhD researcher and educator in neuromorphic, event-based vision, author of the field&apos;s forthcoming
-          textbook.
+          ) — PhD researcher and educator in neuromorphic, event-based vision. An Event-Vision-to-AI textbook is on
+          the way from our INQUIRE.ai team.
         </p>
         <p className="mono mt-2 text-xs text-[var(--muted)]">
           MIT-licensed library · CC0 hero data · open-source for the field · built in one day, commit by commit.

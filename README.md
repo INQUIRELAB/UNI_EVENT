@@ -13,15 +13,17 @@ ue.represent(ue.sample_stream(), as_="frame").to_web("labs/public/data/frame")
 
 ### [**▶ Open the live experience →**](https://uni-event-yazan-inquire.vercel.app)
 
-[The library](#the-library) · [The merge](#the-merge-one-function-two-audiences) · [Reproduce](#reproduce-make-grade)
+[The library](#the-library) · [The merge](#the-merge-one-function-two-audiences) · [How it scores](#how-it-scores) · [Reproduce](#reproduce-make-grade)
+
+<sub>🟠 Proud submission · **Anthropic Build Day** · San Francisco · 13 June 2026 · @Shack15</sub>
 
 </div>
 
 ---
 
-> **Why this exists.** Event cameras are the most exciting sensor in computer vision — microsecond latency, HDR, sparse, power-sipping — and the hardest to *get into*. There is no on-ramp: no place where a newcomer sees what an event stream *is*, feels why the representation matters, and walks out building with a real tool. UniEvent is that on-ramp. It is research-and-education infrastructure: a genuine problem → solution, taught from first principles, open-source for the field — built by an educator writing its textbook.
+> **Why this exists.** Event cameras are the most exciting sensor in computer vision — microsecond latency, HDR, sparse, power-sipping — and the hardest to *get into*. There is no on-ramp: no place where a newcomer sees what an event stream *is*, feels why the representation matters, and walks out building with a real tool. UniEvent is that on-ramp. It is research-and-education infrastructure: a genuine problem → solution, taught from first principles, open-source for the field.
 >
-> Built by **Yazan** ([@INQUIRELAB](https://github.com/INQUIRELAB)) — PhD researcher and educator in neuromorphic, event-based vision, author of the field's forthcoming textbook.
+> Built by **Yazan** ([@INQUIRELAB](https://github.com/INQUIRELAB)) — PhD researcher and educator in neuromorphic, event-based vision. *(An Event-Vision-to-AI textbook is on the way from our INQUIRE.ai team.)*
 
 ## The two legs
 
@@ -46,8 +48,33 @@ Built backward from one hero moment that proves impact and demo at once. Four sc
 
 1. **The hook** — the raw spike stream as an orbitable **space-time point cloud** (x×y = image plane, z = time), born event-by-event on real microsecond timestamps. *"What am I even looking at?"*
 2. **The payoff** — integrate those same events over time and the scene resolves into a legible **event frame**: two people, walking. *Representation is everything, felt.*
-3. **The unification** — one stream, four ways: the time axis morphs across **spike → voxel → frame → graph**, every view a real `ue.represent(stream, as_=…)` call.
+3. **The unification** — one stream, four ways: the time axis morphs across **spike → frame → graph → voxel**, every view a real `ue.represent(stream, as_=…)` call, each labelled with the AI model it feeds (spike → neuromorphic SNN, frame → CNN, graph → GNN, voxel → sparse 3D-conv).
 4. **The Opus touch** — **Claude reads the sensor**: Opus 4.8 narrates the clip from *real computed stats* (never vibes), with a live "ask about this clip" answered, grounded, on stage. See [`ORCHESTRATION.md`](ORCHESTRATION.md) for how an adversarial integrity-auditor agent keeps it honest.
+
+## From a tangle of formats to one import
+
+The event-camera world has no standard. Every dataset ships its own loader, its own format, its own quirks — so most projects burn days on glue before they can train anything.
+
+| The usual way | UniEvent |
+|---|---|
+| A different loader / SDK per dataset (DSEC · Gen1 · PEDRo · FRED · 1Mpx…) | **one import** — `import unievent as ue` |
+| Glue code to reconcile incompatible event formats | **one canonical** `(x, y, t, p)` stream |
+| Hand-rolled representation code, often buggy (unseeded RNG, `argmax` time-collapse, silent skips) | **`represent(stream, as_=…)`** → spike · voxel · frame · graph — seeded, fail-loud, tested |
+| Days of preprocessing before a model sees data | **model-ready arrays** + static web bundles, in one call |
+| No shared on-ramp for newcomers | an interactive **zero-to-hero** experience, rendered from the same output |
+
+Pain → solution, undeniable: per-dataset glue and weeks of preprocessing collapse into **one stream → any representation → the right AI model**.
+
+## How it scores
+
+- **Impact** — the field's most exciting sensor has its steepest on-ramp; UniEvent is the missing unified bridge from raw events to AI-ready representations, taught from first principles on real CC0 data, end to end. Built by an educator in the field (textbook on the way from INQUIRE.ai) — authority you can't fake in a day.
+- **Demo** — a live, deployed [zero-to-hero experience](https://uni-event-yazan-inquire.vercel.app): the performed space-time cloud → accumulate to a legible event frame (two people, walking) → one stream, four representations → Claude reading the sensor.
+- **Opus 4.8 creative use** — an in-Labs tutor that *perceives a sensor modality it cannot natively see*, grounded in real computed stats (never vibes), plus a live, capped "ask about this clip."
+- **Orchestration** — the autonomy story below + [`ORCHESTRATION.md`](ORCHESTRATION.md) + `make grade` **8/8**.
+
+### How this was built (the autonomy story)
+
+Briefed once with a vision and a **machine-checkable rubric**, then told to go — Claude (Opus 4.8) ran it as a fleet. By the git log, the initial build was **9 commits from 14:36 to 16:34** (`git log --reverse`): it designed the library, decoded the CC0 recording, baked real bundles **through** the library, ported a deep-learning reference's *logic while fixing its bugs* (unseeded RNG → seeded, `argmax` time-collapse → full structure, silent skips → fail-loud), and **screenshotted its own WebGL with Playwright** — catching and fixing its own bugs (a 145× point-size blowout; an un-legible hero window) — all while keeping `make grade` green. It survived a **mid-session socket drop** and continued on a one-line "continue"; the only human inputs were answers to its **own clarifying questions** (data license, identity, Opus-on-stage) and a single "looks right." Then a second focused brief for the finishing pass — the security cap, the sensor opener, the data→AI arc, the Opus visual — same loop: **brief → autonomous → verify.** Full evidence in [`ORCHESTRATION.md`](ORCHESTRATION.md) and [`BUILD_JOURNAL.md`](BUILD_JOURNAL.md).
 
 ## The library
 
