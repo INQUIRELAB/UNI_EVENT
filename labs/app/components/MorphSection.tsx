@@ -89,9 +89,11 @@ export default function MorphSection() {
           One clip. Every representation. One call.
         </h2>
         <p className="mt-3 max-w-2xl text-[15px] leading-relaxed text-[var(--muted)]">
-          The same 120,000 events, seen four ways. Watch the <span className="text-white">time axis</span> reshape —
-          continuous spikes, quantized into voxel slabs, collapsed to a frame, rewired as a graph. Every view is
-          real <span className="mono text-white">unievent</span> output from one canonical stream.
+          The same 120,000 events, <span className="text-white">re-binned</span> four ways. Watch the{" "}
+          <span className="text-white">time axis</span> reshape — continuous spikes, quantized into 16 voxel slabs,
+          collapsed to a frame, rewired as a kNN graph. The counts below are real{" "}
+          <span className="mono text-white">unievent</span> output; the morph shows one canonical stream taking each
+          shape.
         </p>
 
         {/* toggles */}

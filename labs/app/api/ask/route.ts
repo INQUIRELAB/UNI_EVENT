@@ -20,6 +20,21 @@ Rules:
 
 export async function POST(req: Request) {
   try {
+    // demo-safe deterrent: block cross-origin browser abuse of this paid endpoint.
+    // (Same-origin requests from the Labs pass; not a substitute for a real cap —
+    // see HUMAN_TODO: cap or disable /api/ask after the event.)
+    const origin = req.headers.get("origin");
+    const host = req.headers.get("host");
+    if (origin && host) {
+      try {
+        if (new URL(origin).host !== host) {
+          return Response.json({ error: "cross-origin not allowed" }, { status: 403 });
+        }
+      } catch {
+        return Response.json({ error: "bad origin" }, { status: 403 });
+      }
+    }
+
     const body = (await req.json()) as { question?: string };
     const question = (body.question ?? "").toString().slice(0, 600).trim();
     if (!question) {
