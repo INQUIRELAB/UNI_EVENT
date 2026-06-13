@@ -10,6 +10,8 @@ import TutorSection from "./components/TutorSection";
 import ClosingSection from "./components/ClosingSection";
 import SmoothScroll from "./components/SmoothScroll";
 import Reveal from "./components/Reveal";
+import SensorOpener from "./components/SensorOpener";
+import MountWhenNear from "./components/MountWhenNear";
 
 // R3F must run client-only (no SSR of WebGL).
 const HeroCanvas = dynamic(() => import("./components/HeroCanvas"), { ssr: false });
@@ -30,11 +32,15 @@ export default function Home() {
     <main className="relative w-full">
       <SmoothScroll />
       <span id="top" />
-      <section className="relative h-[100svh] w-full overflow-hidden">
-      {/* the performed hero */}
-      <div className="absolute inset-0">
+
+      {/* first principles: why event cameras (flows into the hero) */}
+      <SensorOpener />
+
+      <section id="hero" className="relative h-[100svh] w-full overflow-hidden">
+      {/* the performed hero — lazy-mounted so the reveal plays on arrival */}
+      <MountWhenNear className="absolute inset-0" rootMargin="400px">
         <HeroCanvas onManifest={setManifest} revealKey={revealKey} />
-      </div>
+      </MountWhenNear>
 
       {/* top-left identity */}
       <header className="pointer-events-none absolute left-6 top-6 max-w-[52ch]">
