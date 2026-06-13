@@ -4,6 +4,7 @@ import { useState } from "react";
 import dynamic from "next/dynamic";
 import type { Manifest } from "./lib/loadUniEvent";
 import { PALETTE } from "./lib/palette";
+import AccumulationSection from "./components/AccumulationSection";
 
 // R3F must run client-only (no SSR of WebGL).
 const HeroCanvas = dynamic(() => import("./components/HeroCanvas"), { ssr: false });
@@ -21,7 +22,8 @@ export default function Home() {
   const res = manifest?.resolution;
 
   return (
-    <main className="relative h-[100svh] w-full overflow-hidden">
+    <main className="relative w-full">
+      <section className="relative h-[100svh] w-full overflow-hidden">
       {/* the performed hero */}
       <div className="absolute inset-0">
         <HeroCanvas onManifest={setManifest} revealKey={revealKey} />
@@ -97,6 +99,14 @@ export default function Home() {
           </button>
         </div>
       </footer>
+
+        {/* scroll cue */}
+        <div className="pointer-events-none absolute inset-x-0 bottom-16 flex justify-center">
+          <div className="mono animate-pulse text-xs text-[var(--muted)]">scroll ↓ &nbsp;&quot;what am I looking at?&quot;</div>
+        </div>
+      </section>
+
+      <AccumulationSection />
     </main>
   );
 }
