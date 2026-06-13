@@ -1,0 +1,58 @@
+{
+  "schema": "unievent/web-bundle@1",
+  "representation": "graph",
+  "resolution": {
+    "H": 720,
+    "W": 1280
+  },
+  "source": {
+    "name": "prophesee:pedestrians",
+    "license": "CC0",
+    "simulated": 0,
+    "note": "raw EVT3, decoded with expelliarmus; window [19780504, 20280504) \u00b5s, uniformly decimated 1,732,706->120,000 events for the web (a render choice; surviving per-event t,x,y,p are real).",
+    "sensor": "1280x720",
+    "original_events": 39297796,
+    "window_us": [
+      19780504,
+      20280504
+    ],
+    "decimation": {
+      "from": 1732706,
+      "to": 120000,
+      "seed": 0
+    },
+    "source_sha256_64mb": "d2bebc7a69b5cdad0ad49d20487cf6226290972196bbbb26e21547c49d2e99c9"
+  },
+  "buffers": {
+    "nodes": {
+      "dtype": "float32",
+      "shape": [
+        1200,
+        3
+      ],
+      "offset": 0,
+      "length": 14400
+    },
+    "edges": {
+      "dtype": "int32",
+      "shape": [
+        2,
+        4800
+      ],
+      "offset": 14400,
+      "length": 38400
+    }
+  },
+  "stats": {
+    "num_nodes": 1200,
+    "num_edges": 4800,
+    "k": 4
+  },
+  "params": {
+    "n": 1200,
+    "k": 4,
+    "seed": 0
+  },
+  "caption": "Real raw events \u2014 prophesee:pedestrians (CC0). 1,200 nodes, 4,800 kNN edges.",
+  "payload_bytes": 52800
+}

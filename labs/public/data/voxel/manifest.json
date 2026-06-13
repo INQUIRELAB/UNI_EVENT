@@ -1,0 +1,61 @@
+{
+  "schema": "unievent/web-bundle@1",
+  "representation": "voxel",
+  "resolution": {
+    "H": 720,
+    "W": 1280
+  },
+  "source": {
+    "name": "prophesee:pedestrians",
+    "license": "CC0",
+    "simulated": 0,
+    "note": "raw EVT3, decoded with expelliarmus; window [19780504, 20280504) \u00b5s, uniformly decimated 1,732,706->120,000 events for the web (a render choice; surviving per-event t,x,y,p are real).",
+    "sensor": "1280x720",
+    "original_events": 39297796,
+    "window_us": [
+      19780504,
+      20280504
+    ],
+    "decimation": {
+      "from": 1732706,
+      "to": 120000,
+      "seed": 0
+    },
+    "source_sha256_64mb": "d2bebc7a69b5cdad0ad49d20487cf6226290972196bbbb26e21547c49d2e99c9"
+  },
+  "buffers": {
+    "coords": {
+      "dtype": "int16",
+      "shape": [
+        113011,
+        3
+      ],
+      "offset": 0,
+      "length": 678066
+    },
+    "feats": {
+      "dtype": "float32",
+      "shape": [
+        113011,
+        2
+      ],
+      "offset": 678066,
+      "length": 904088
+    }
+  },
+  "stats": {
+    "n_events": 120000,
+    "n_voxels": 113011,
+    "bins": 16,
+    "on_frac": 0.5326
+  },
+  "params": {
+    "bins": 16,
+    "channel_order": [
+      "off",
+      "on"
+    ]
+  },
+  "caption": "Real raw events \u2014 prophesee:pedestrians (CC0). 113,011 active voxels, 16 time bins.",
+  "payload_bytes": 1582154
+}

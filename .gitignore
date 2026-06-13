@@ -1,0 +1,50 @@
+# ── UniEvent public repo .gitignore ──────────────────────────────────────────
+# Belt-and-suspenders against the #1 DQ risk (a restricted-data leak), while
+# ALLOWING the small CC0-derived web bundles + the real sample npz to commit
+# (clean-clone reproduce needs them). A license-gate test guards the other way.
+
+# Raw event recordings / large binaries — NEVER commit (multi-GB, often NC/SA).
+*.raw
+*.hdf5
+*.h5
+*.dat
+*.aedat
+*.aedat4
+*.npy
+*.zip
+
+# Restricted dataset folders (research/NC/SA licensed) — never in the public repo.
+# Anchored to repo ROOT (leading slash): on Windows core.ignorecase is true, so an
+# un-anchored `Data/` would also swallow `unievent/data/` and `labs/public/data/`.
+/Data/
+/data_samples/
+
+# ALLOW-LIST (explicit, belt-and-suspenders): the real CC0 hero clip + baked web
+# bundles DO commit (clean-clone reproduce needs them).
+!unievent/data/sample_stream.npz
+!labs/public/data/**
+
+# Python
+__pycache__/
+*.pyc
+*.egg-info/
+.eggs/
+.pytest_cache/
+build/
+dist/
+.venv/
+venv/
+.env
+.env.*
+
+# Node / Next.js / Vercel
+node_modules/
+.next/
+out/
+.vercel/
+npm-debug.log*
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*~

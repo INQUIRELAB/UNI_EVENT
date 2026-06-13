@@ -1,0 +1,49 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "unievent"
+version = "0.1.0"
+description = "One import: any event-camera recording -> one canonical (x,y,t,p) stream -> spike / voxel / frame / graph (+ time-surface) from a single call."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Yazan", email = "mohamad.yazan@ou.edu" }]
+maintainers = [{ name = "INQUIRELAB" }]
+keywords = ["event-camera", "neuromorphic", "dvs", "spiking", "snn", "voxel", "computer-vision", "education"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Science/Research",
+    "Intended Audience :: Education",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Topic :: Scientific/Engineering :: Image Processing",
+]
+# Lean core: a newcomer can `pip install unievent` and run represent() on their
+# own (t,x,y,p) arrays with just numpy + scipy. Decoding vendor .raw files and
+# heavy DL deps are opt-in extras, so the base install stays small and portable.
+dependencies = [
+    "numpy>=1.24",
+    "scipy>=1.10",
+]
+
+[project.optional-dependencies]
+io = ["expelliarmus>=1.1"]          # decode Prophesee .raw/.dat/.evt -> (x,y,t,p)
+dev = ["pytest>=7", "matplotlib>=3.6"]
+datasets = ["h5py>=3.8", "hdf5plugin>=4.0", "torch>=2.0"]   # dataset adapters (stretch)
+
+[project.scripts]
+unievent = "unievent.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/INQUIRELAB/UNI_EVENT"
+Repository = "https://github.com/INQUIRELAB/UNI_EVENT"
+
+[tool.hatch.build.targets.wheel]
+packages = ["unievent"]
+artifacts = ["unievent/data/*.npz"]
+
+[tool.pytest.ini_options]
+addopts = "-q"
+testpaths = ["tests"]

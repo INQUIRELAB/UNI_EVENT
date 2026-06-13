@@ -1,0 +1,61 @@
+{
+  "schema": "unievent/web-bundle@1",
+  "representation": "spike",
+  "resolution": {
+    "H": 720,
+    "W": 1280
+  },
+  "source": {
+    "name": "prophesee:pedestrians",
+    "license": "CC0",
+    "simulated": 0,
+    "note": "raw EVT3, decoded with expelliarmus; window [19780504, 20280504) \u00b5s, uniformly decimated 1,732,706->120,000 events for the web (a render choice; surviving per-event t,x,y,p are real).",
+    "sensor": "1280x720",
+    "original_events": 39297796,
+    "window_us": [
+      19780504,
+      20280504
+    ],
+    "decimation": {
+      "from": 1732706,
+      "to": 120000,
+      "seed": 0
+    },
+    "source_sha256_64mb": "d2bebc7a69b5cdad0ad49d20487cf6226290972196bbbb26e21547c49d2e99c9"
+  },
+  "buffers": {
+    "t": {
+      "dtype": "int32",
+      "shape": [
+        120000
+      ],
+      "offset": 0,
+      "length": 480000
+    },
+    "coords": {
+      "dtype": "int16",
+      "shape": [
+        120000,
+        2
+      ],
+      "offset": 480000,
+      "length": 480000
+    },
+    "p": {
+      "dtype": "int8",
+      "shape": [
+        120000
+      ],
+      "offset": 960000,
+      "length": 120000
+    }
+  },
+  "stats": {
+    "n_events": 120000,
+    "t_span_us": 499998,
+    "on_frac": 0.5326
+  },
+  "params": {},
+  "caption": "Real raw events \u2014 prophesee:pedestrians (CC0). 120,000 spikes, 500 ms, 53% ON.",
+  "payload_bytes": 1080000
+}

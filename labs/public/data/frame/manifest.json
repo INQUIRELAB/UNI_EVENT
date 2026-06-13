@@ -1,0 +1,51 @@
+{
+  "schema": "unievent/web-bundle@1",
+  "representation": "frame",
+  "resolution": {
+    "H": 720,
+    "W": 1280
+  },
+  "source": {
+    "name": "prophesee:pedestrians",
+    "license": "CC0",
+    "simulated": 0,
+    "note": "raw EVT3, decoded with expelliarmus; window [19780504, 20280504) \u00b5s, uniformly decimated 1,732,706->120,000 events for the web (a render choice; surviving per-event t,x,y,p are real).",
+    "sensor": "1280x720",
+    "original_events": 39297796,
+    "window_us": [
+      19780504,
+      20280504
+    ],
+    "decimation": {
+      "from": 1732706,
+      "to": 120000,
+      "seed": 0
+    },
+    "source_sha256_64mb": "d2bebc7a69b5cdad0ad49d20487cf6226290972196bbbb26e21547c49d2e99c9"
+  },
+  "buffers": {
+    "frame": {
+      "dtype": "float32",
+      "shape": [
+        720,
+        1280
+      ],
+      "offset": 0,
+      "length": 3686400
+    }
+  },
+  "stats": {
+    "n_events": 120000,
+    "vmin": -9.0,
+    "vmax": 48.0,
+    "nonzero_px": 76861
+  },
+  "params": {
+    "display_clip": [
+      -3,
+      3
+    ]
+  },
+  "caption": "Real raw events \u2014 prophesee:pedestrians (CC0). Signed accumulation of 120,000 events.",
+  "payload_bytes": 3686400
+}
