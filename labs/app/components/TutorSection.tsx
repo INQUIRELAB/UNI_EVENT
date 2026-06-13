@@ -17,10 +17,10 @@ interface Stats {
 }
 
 const SUGGESTED = [
-  "Why is this clip so sparse?",
-  "Which representation should I use to detect these people?",
-  "What does the balanced ON/OFF polarity tell you?",
-  "Why would an event camera beat a normal camera here?",
+  "What are those two clusters?",
+  "Why is 94% of the sensor dark?",
+  "What does the ON/OFF balance mean?",
+  "Is this really two people?",
 ];
 
 const CLAUDE_ORANGE = "#D97757";
@@ -131,9 +131,10 @@ export default function TutorSection() {
           Claude reads the sensor.
         </h2>
         <p className="mt-3 max-w-2xl text-[15px] leading-relaxed text-[var(--fg)]">
-          Microsecond, asynchronous events are a modality language models have never been able to see. Here Claude
-          reasons about this clip — grounded in <span className="text-white">real computed statistics</span>, never
-          vibes. Every chip below is measured from the stream.
+          Stuck on what you&apos;re seeing?{" "}
+          <span className="text-white">Claude (Opus 4.8) is reading this sensor with you</span> — a modality language
+          models have never been able to natively see, grounded in real measured stats, never vibes. Here&apos;s its
+          read, and you can ask it anything:
         </p>
 
         {/* the read — a branded card */}
@@ -146,15 +147,17 @@ export default function TutorSection() {
         )}
 
         {/* live ask */}
-        <div className="mt-9">
-          <div className="mono mb-2 text-xs uppercase tracking-wider text-[var(--muted)]">ask about this clip — live</div>
+        <div className="mt-9 rounded-xl border border-white/10 bg-white/[0.015] p-5">
+          <div className="mono mb-2.5 text-xs uppercase tracking-wider text-[var(--muted)]">
+            ask Claude — live · grounded in the real stats · tap a question or type your own
+          </div>
           <div className="flex flex-wrap gap-2">
             {SUGGESTED.map((s) => (
               <button
                 key={s}
                 onClick={() => ask(s)}
                 disabled={loading}
-                className="rounded-full border border-white/15 px-3 py-1 text-xs text-[var(--muted)] transition hover:border-white/40 hover:text-white disabled:opacity-40"
+                className="rounded-full border border-white/20 bg-white/[0.03] px-3.5 py-1.5 text-sm text-[var(--fg)] transition hover:border-[var(--on)]/50 hover:bg-[var(--on)]/10 hover:text-white disabled:opacity-40"
               >
                 {s}
               </button>
