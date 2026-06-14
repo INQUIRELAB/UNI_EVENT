@@ -43,6 +43,7 @@ node_modules/
 out/
 .vercel/
 npm-debug.log*
+*.tsbuildinfo
 
 # adapter-gen demo artifacts (regenerated each run; Opus output is non-deterministic)
 scripts/_demo_newformat.csv
