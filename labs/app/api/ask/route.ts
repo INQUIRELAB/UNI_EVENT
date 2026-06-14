@@ -67,6 +67,15 @@ function clientIp(req: Request): string {
 }
 
 export async function POST(req: Request) {
+  // OFF BY DEFAULT — the public deployment never spends API credits. The live
+  // Opus call only runs when LIVE_TUTOR=1 is set in the server environment
+  // (pair with NEXT_PUBLIC_LIVE_TUTOR=1 so the Labs shows the ask box). Until
+  // then every request returns the grounded pre-baked read — the key is never
+  // read and Anthropic is never called.
+  if (process.env.LIVE_TUTOR !== "1") {
+    return Response.json({ answer: preBakedRead(), model: "pre-baked", fallback: true, disabled: true });
+  }
+
   // cross-origin browser abuse guard (same-origin requests from the Labs pass)
   const origin = req.headers.get("origin");
   const host = req.headers.get("host");

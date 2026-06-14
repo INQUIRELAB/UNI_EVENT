@@ -25,6 +25,11 @@ const SUGGESTED = [
 
 const CLAUDE_ORANGE = "#D97757";
 
+// Live Opus Q&A is OFF by default so the public site never spends API credits.
+// The grounded pre-baked read below is always shown; the live ask box appears
+// only when NEXT_PUBLIC_LIVE_TUTOR=1 (pair with server-side LIVE_TUTOR=1).
+const LIVE_TUTOR = process.env.NEXT_PUBLIC_LIVE_TUTOR === "1";
+
 // A warm radial burst — evokes Claude/Anthropic without copying the trademark.
 function ClaudeMark({ size = 18 }: { size?: number }) {
   return (
@@ -134,7 +139,7 @@ export default function TutorSection() {
           Stuck on what you&apos;re seeing?{" "}
           <span className="text-white">Claude (Opus 4.8) is reading this sensor with you</span> — a modality language
           models have never been able to natively see, grounded in real measured stats, never vibes. Here&apos;s its
-          read, and you can ask it anything:
+          read{LIVE_TUTOR ? ", and you can ask it anything" : ""}:
         </p>
 
         {/* the read — a branded card */}
@@ -146,7 +151,8 @@ export default function TutorSection() {
           </div>
         )}
 
-        {/* live ask */}
+        {/* live ask — shown only when the live Opus tutor is enabled (NEXT_PUBLIC_LIVE_TUTOR=1) */}
+        {LIVE_TUTOR && (
         <div className="mt-9 rounded-xl border border-white/10 bg-white/[0.015] p-5">
           <div className="mono mb-2.5 text-xs uppercase tracking-wider text-[var(--muted)]">
             ask Claude — live · grounded in the real stats · tap a question or type your own
@@ -209,10 +215,14 @@ export default function TutorSection() {
             </div>
           )}
         </div>
+        )}
 
         <p className="mono mt-6 text-xs text-[var(--muted)]">
-          Pre-computed narration is integrity-audited (a second agent flags any unsupported claim). Live answers call
-          Claude Opus 4.8 with these real stats as context — grounded, never vibes.
+          Pre-computed narration is integrity-audited (a second agent flags any unsupported claim)
+          {LIVE_TUTOR
+            ? ". Live answers call Claude Opus 4.8 with these real stats as context — grounded, never vibes"
+            : ", grounded in the same real stats and never fabricated"}
+          .
         </p>
         <p className="mt-3 text-sm leading-relaxed text-[var(--fg)]">
           And Opus does real engineering here too:{" "}

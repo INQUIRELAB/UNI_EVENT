@@ -58,7 +58,7 @@ The event-camera world has no standard. Do it yourself and you write — per dat
 
 - **Impact** — the field's most exciting sensor has its steepest on-ramp; UniEvent is the missing unified bridge from raw events to AI-ready representations, on real CC0 data, end to end — by an educator in the field.
 - **Demo** — a live, deployed [zero-to-hero experience](https://uni-event-yazan-inquire.vercel.app): performed cloud → legible event frame → four representations → Claude reading the sensor.
-- **Opus 4.8 creative use** — (1) an in-Labs tutor that *perceives a sensor modality it cannot natively see*, grounded in real computed stats (never vibes) + a live, capped "ask about this clip"; (2) a **test-gated adapter generator** (`python scripts/adapter_demo.py`): paste a new format → Opus writes a conforming adapter → the conformance gate flashes green → all four builders run. Real, self-verifying engineering.
+- **Opus 4.8 creative use** — (1) an in-Labs tutor that *perceives a sensor modality it cannot natively see*, grounded in real computed stats (never vibes) + an opt-in live "ask about this clip" (Opus answers from the same real stats — off by default on the public site so it never spends the key); (2) a **test-gated adapter generator** (`python scripts/adapter_demo.py`): paste a new format → Opus writes a conforming adapter → the conformance gate flashes green → all four builders run. Real, self-verifying engineering.
 - **Orchestration** — the autonomy story below + a machine-checkable rubric (`make grade` **8/8**).
 
 <details>
@@ -100,13 +100,13 @@ Lean by design: the base install is just `numpy` + `scipy`, so you can run `repr
 
 ## Reproduce (`make grade`)
 
-`done` is machine-verifiable. [`rubric.md`](rubric.md) is real commands with real exit codes; `make grade` prints a scorecard (currently **8/8**): install · `pytest` · four builders match SPEC · the spike-integrity raise · bundles schema-conformant · the live URL responds · clean-clone reproduce · the built-today fence.
+`done` is machine-verifiable. [`rubric.md`](rubric.md) is real commands with real exit codes; `make grade` prints a scorecard (currently **8/8**): install · `pytest` · four builders match SPEC · the spike-integrity raise · bundles schema-conformant · the live URL responds · clean-clone reproduce · the license gate.
 
 ## Layout
 
 ```
 unievent/             core (x,y,t,p) model · represent() · web.export · io · cli · MODEL_HINT
-labs/                 Next.js + R3F + GSAP — renders real UniEvent output (+ app/api/ask → Opus 4.8)
+labs/                 Next.js + R3F + GSAP — renders real UniEvent output (+ opt-in app/api/ask → Opus 4.8)
 scripts/              make_bundles · clip_stats · adapter_demo (Opus) · grade.sh · reproduce.sh
 rubric.md · WEB_BUNDLE_SCHEMA.md · SPEC.md
 ```
