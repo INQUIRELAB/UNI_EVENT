@@ -59,12 +59,12 @@ The event-camera world has no standard. Do it yourself and you write — per dat
 - **Impact** — the field's most exciting sensor has its steepest on-ramp; UniEvent is the missing unified bridge from raw events to AI-ready representations, on real CC0 data, end to end — by an educator in the field.
 - **Demo** — a live, deployed [zero-to-hero experience](https://uni-event-yazan-inquire.vercel.app): performed cloud → legible event frame → four representations → Claude reading the sensor.
 - **Opus 4.8 creative use** — (1) an in-Labs tutor that *perceives a sensor modality it cannot natively see*, grounded in real computed stats (never vibes) + a live, capped "ask about this clip"; (2) a **test-gated adapter generator** (`python scripts/adapter_demo.py`): paste a new format → Opus writes a conforming adapter → the conformance gate flashes green → all four builders run. Real, self-verifying engineering.
-- **Orchestration** — the autonomy story below + [`ORCHESTRATION.md`](ORCHESTRATION.md) + `make grade` **8/8**.
+- **Orchestration** — the autonomy story below + a machine-checkable rubric (`make grade` **8/8**).
 
 <details>
 <summary><b>How this was built</b> — the autonomy story (sourced from <code>git log</code>)</summary>
 
-Briefed once with a vision + a **machine-checkable rubric**, then told to go — Claude (Opus 4.8) ran the build itself. By the git log, the initial build was **9 commits, `14:36`→`16:34`** (`git log --reverse`): it designed the library, decoded the CC0 recording, baked real bundles **through** the library, ported a reference's *logic while fixing its bugs* (unseeded RNG → seeded, `argmax` time-collapse → full structure, silent skips → fail-loud), and **screenshotted its own WebGL with Playwright** — catching and fixing its own bugs (a 145× point-size blowout; an un-legible hero window) — all while keeping `make grade` green. It survived a **mid-session socket drop** and continued on a one-line "continue"; the only human inputs were answers to its **own clarifying questions** + a single "looks right." A second focused brief drove the finishing pass — same loop: **brief → autonomous → verify.** Full evidence in [`ORCHESTRATION.md`](ORCHESTRATION.md) and [`BUILD_JOURNAL.md`](BUILD_JOURNAL.md).
+Briefed once with a vision + a **machine-checkable rubric**, then told to go — Claude (Opus 4.8) ran the build itself. By the git log, the initial build was **9 commits, `14:36`→`16:34`** (`git log --reverse`): it designed the library, decoded the CC0 recording, baked real bundles **through** the library, ported a reference's *logic while fixing its bugs* (unseeded RNG → seeded, `argmax` time-collapse → full structure, silent skips → fail-loud), and **screenshotted its own WebGL with Playwright** — catching and fixing its own bugs (a 145× point-size blowout; an un-legible hero window) — all while keeping `make grade` green. It survived a **mid-session socket drop** and continued on a one-line "continue"; the only human inputs were answers to its **own clarifying questions** + a single "looks right." A second focused brief drove the finishing pass — same loop: **brief → autonomous → verify.** The proof is the commit history itself (`git log`).
 </details>
 
 ## The library
@@ -108,7 +108,7 @@ Lean by design: the base install is just `numpy` + `scipy`, so you can run `repr
 unievent/             core (x,y,t,p) model · represent() · web.export · io · cli · MODEL_HINT
 labs/                 Next.js + R3F + GSAP — renders real UniEvent output (+ app/api/ask → Opus 4.8)
 scripts/              make_bundles · clip_stats · adapter_demo (Opus) · grade.sh · reproduce.sh
-rubric.md · ORCHESTRATION.md · BUILD_JOURNAL.md · WEB_BUNDLE_SCHEMA.md
+rubric.md · WEB_BUNDLE_SCHEMA.md · SPEC.md
 ```
 
 <div align="center">

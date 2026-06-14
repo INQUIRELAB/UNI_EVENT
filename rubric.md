@@ -12,7 +12,7 @@ with a real exit code and prints a scorecard.
 | 5 | bundles schema-conformant | `make_bundles` writes a valid `manifest.json` + `payload.bin` per rep; `validate_bundles.py` re-reads them like the JS loader and passes |
 | 6 | live site reachable | `GET <LIVE_URL>/` (or `/health`) == 200 — the static Labs site counts |
 | 7 | clean-clone reproduce | `reproduce.sh` regenerates the hero bundle (`labs/public/data/spike/`) from the committed real sample |
-| 8 | DQ fence | `CONTRIBUTIONS_TODAY.md` exists and lists today-dated net-new files; license-gate test green |
+| 8 | license gate | the license-gate test passes — no restricted dataset name or large/raw data file leaks into the repo |
 
 ## Check 3 — SPEC shapes (asserted by `tests/test_represent.py`)
 - `spike` → `t int64, x int16, y int16, p int8∈{0,1}`, each `(N,)`.

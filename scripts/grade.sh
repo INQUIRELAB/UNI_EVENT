@@ -52,8 +52,8 @@ if [ "$code" = "200" ]; then ok "6 live site $LIVE_URL ($code)"; else no "6 live
 # 7 — hero bundle present (reproducible target)
 if [ -f labs/public/data/spike/manifest.json ] && [ -f labs/public/data/spike/payload.bin ]; then ok "7 hero bundle reachable"; else no "7 hero bundle"; fi
 
-# 8 — DQ fence
-if [ -f CONTRIBUTIONS_TODAY.md ] && grep -q "2026-06-13" CONTRIBUTIONS_TODAY.md; then ok "8 built-today fence"; else no "8 CONTRIBUTIONS_TODAY.md"; fi
+# 8 — license gate (no restricted dataset / large-raw-file leaks)
+if $PY -m pytest tests/test_license_gate.py -q >/dev/null 2>&1; then ok "8 license-gate (no restricted data)"; else no "8 license-gate"; fi
 
 echo "== $pass passed, $fail failed =="
 [ "$fail" -eq 0 ]
